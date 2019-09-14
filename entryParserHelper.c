@@ -1,4 +1,4 @@
-#include "helperParser.h"
+#include "entryParserHelper.h"
 
 /***** Functions *****/
 

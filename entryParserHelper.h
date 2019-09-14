@@ -1,5 +1,5 @@
-#ifndef _HELPER_PARSER_
-#define _HELPER_PARSER_
+#ifndef _ENTRY_PARSER_HELPER_
+#define _Entry_PARSER_HELPER_
 
 #include <stdbool.h>
 #include <stdint.h>
