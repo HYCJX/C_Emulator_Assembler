@@ -20,4 +20,7 @@ clean:
 compile: compileAssmble compileEmulate
 
 compileAssmble:
-		gcc -g 32bitProcess.c -o assemble
+		gcc -g assemble.c assemblerIO.c strIntList.c 32bitProcess.c entryParser.c entryParserBody.c entryParserHelper.c -o assemble
+
+compileEmulate:
+		gcc -g emulate.c armMachine.c 32bitProcess.c armMachineHelper.c armMachineExec.c emulateIO.c -o emulate
