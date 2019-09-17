@@ -1,5 +1,5 @@
 #ifndef _ENTRY_PARSER_HELPER_
-#define _Entry_PARSER_HELPER_
+#define _ENTRY_PARSER_HELPER_
 
 #include <stdbool.h>
 #include <stdint.h>
@@ -14,7 +14,15 @@
 #define DEFAULT_STRLEN (0xff)
 #define DEFAULT_STRLEN_SHORT (16)
 
-uint32_t evalEpression(char *exp, bool *U);
+char strEndChar(char *str);
+
+char *removeFrontRear(char *str);
+
+char *removeLastChar(char *str);
+
+uint32_t evalExpression(char *exp, bool *U);
+
+uint32_t getRegId(char *str);
 
 //Input a 32-bit operand2 and convert it to 12 bits. (op2 is an expression.)
 uint32_t getOp2Numeric(uint32_t operand2);
@@ -29,10 +37,10 @@ uint32_t getShiftCode(char *shiftType);
 uint32_t parseOperand2(char **tokensFrag, bool *I);
 
 //Evaluate the shift.
-//@param *tokensFrag: Given fragment of tokens which represents the shift.
+//@param **tokensFrag: Given fragment of tokens which represents the shift.
 //@param *Rn:         Given boolean pointer which stores the updated Rn value.
 //@param *offset:     Given boolean pointer which stores the updated offset value.
 //@param *U:          Given boolean pointer which stores the updated U value.
-void parseShift(char *tokensFrag, uint32_t *Rn, uint32_t *offset, bool *U);
+void parseShift(char **tokensFrag, uint32_t *Rn, uint32_t *offset, bool *U);
 
 #endif

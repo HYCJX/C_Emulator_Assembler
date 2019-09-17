@@ -42,7 +42,7 @@ uint32_t getAddress(StrIntList *list, char *label)
         }
         current = current -> next;
     }
-    perrpr("str not found!");
+    perror("str not found!");
     return 0;
 }
 

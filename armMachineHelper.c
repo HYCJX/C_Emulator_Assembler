@@ -45,7 +45,7 @@ bool getCpsrBit(char flag, ARMmachine *machine)
         shift = 29;
         break;
     case 'V':
-        shift - 28;
+        shift = 28;
         break;
     default:
         perror("wrong flag!");
@@ -108,11 +108,11 @@ void setCpsrBit(char flag, bool givenBit, ARMmachine *machine)
         shift = 29;
         break;
     case 'V':
-        shift - 28;
+        shift = 28;
         break;
     default:
         perror("wrong flag!");
         return;
     }
-    return setBit(*(machine -> cpsr), shift, givenBit);   
+    return setBit(machine -> cpsr, shift, givenBit);   
 }

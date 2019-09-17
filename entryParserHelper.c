@@ -1,6 +1,17 @@
 #include "entryParserHelper.h"
 
-/***** Functions *****/
+char strEndChar(char *str) {
+    return str[strlen(str) - 1];
+}
+
+char *removeFrontRear(char *str) {
+    return removeLastChar(&str[1]);
+}
+
+char *removeLastChar(char *str) {
+    str[strlen(str) - 1] = '\0';
+    return str;
+}
 
 uint32_t evalExpression(char *exp, bool *U)
 {
@@ -23,6 +34,21 @@ uint32_t evalExpression(char *exp, bool *U)
         exit(EXIT_FAILURE);
     }
     return result;
+}
+
+uint32_t getRegId(char *str) {
+    if (str[0] == 'r') {
+        if (str[1] == '0' && !str[2]) {
+            return 0;
+        }
+        char *tmp;
+        uint32_t id = (uint32_t) strtol(&str[1], &tmp, 10);
+        if (id > 0 && id < 17) {
+            return id;
+        }
+    }
+    perror("wrong register format!\n");
+    return ERROR_CODE;
 }
 
 uint32_t getOp2Numeric(uint32_t operand2)
@@ -150,34 +176,4 @@ void parseShift(char **tokensFrag, uint32_t *Rn, uint32_t *offset, bool *U)
             *offset = reg << 8 | typeCode << 5 | 1 << 4 | Rm;
         }
     }
-}
-
-/***** Helper Functions *****/
-
-static char strEndChar(char *str) {
-    return str[strlen(str) - 1];
-}
-
-static char *removeFrontRear(char *str) {
-    return removeLastChar(&str[1]);
-}
-
-static char *removeLastChar(char *str) {
-    str[strlen(str) - 1] = '\0';
-    return str;
-}
-
-static uint32_t getRegId(char *str) {
-    if (str[0] == 'r') {
-        if (str[1] == '0' && !str[2]) {
-            return 0;
-        }
-        char *tmp;
-        uint32_t id = (uint32_t) strtol(&str[1], &tmp, 10);
-        if (id > 0 && id < 17) {
-            return id;
-        }
-    }
-    perror("wrong register format!\n");
-    return ERROR_CODE;
 }

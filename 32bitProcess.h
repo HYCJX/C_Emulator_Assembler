@@ -76,6 +76,6 @@ void printlnBinary(u_int32_t instruction);
 //@param dest:     Pointer to the designated 32-bit code.
 //@param index:    Index fo teh target bit.
 //@param givenBit: Bit replaces the target bit.
-void setBit(u_int32_t *dest, unsigned int index, bool givenBit);
+void setBit(uint32_t *dest, unsigned int index, bool givenBit);
 
 #endif
