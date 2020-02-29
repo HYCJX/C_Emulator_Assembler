@@ -1,0 +1,4 @@
+# Ignore IDE and text editor files
+cmake-build-debug
+.idea
+.vscode
