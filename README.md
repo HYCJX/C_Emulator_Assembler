@@ -2,4 +2,4 @@
 
 First-year project
 
-Emulator & Assembler
+Emulator & Assembler for ARM assembly
